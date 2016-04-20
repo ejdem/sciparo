@@ -15,3 +15,5 @@ Spock smashes scissors.
 
 Project would contain User, Match and Card classes.
 (Card is one of those 5 things you can chose from).
+
+*README to be updated
