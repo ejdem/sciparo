@@ -1,2 +1,3 @@
-= form_for(@match) do |f|
-  = hidden_field_tag :played_id, current_user.id
+= form_for(current_user.active_matches.build) do |f|
+  = hidden_field_tag :player1_id, current_user.id
+  = f.submit "play", class: "btn btn-primary form-control"
