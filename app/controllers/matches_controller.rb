@@ -1,6 +1,5 @@
 class MatchesController < ApplicationController
     
-    
     def new
         @match = Match.new
     end
@@ -8,7 +7,8 @@ class MatchesController < ApplicationController
     def create
         @match = current_user.start_match
         if @match.save!
-            flash[:success] = "match starts!"
+            current_user.save!
+            flash.now[:success] = "match starts!"
             redirect_to @match
         else
             flash[:danger] = "ooops! something went wrong"

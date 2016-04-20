@@ -3,6 +3,7 @@
     = render '/matches/stats'
   .col-md-6
     Here will be our matches
+    #match_field
   .col-md-3
     = render '/matches/stats2'
 .row
@@ -10,4 +11,4 @@
     %ul.list-inline
       - @cards.each do |c|
         %li
-          = button_to c.name, '#', class: "btn btn-primary btn-sm"
+          = link_to c.name, c, class: "btn btn-primary btn-sm", remote: true

@@ -1,4 +1,9 @@
 .col-md-6.col-md-offset-3
   %p
-    There will be all best players one day here!
+    Our heroes:
+    %ol
+      - @users.each do |u|
+        - next if u.id == 1
+        %li
+          = u.name
   = link_to "back", root_path, class: 'btn btn-danger'

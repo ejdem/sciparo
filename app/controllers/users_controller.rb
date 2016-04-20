@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def new
     @user = User.new
   end
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Your user is ready"
-      redirect_to       '/matches/new'
+      redirect_to '/matches/new'
     else
       redirect_to 'new'
     end
@@ -19,4 +20,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name)
   end
+  
 end
