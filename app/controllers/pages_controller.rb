@@ -2,8 +2,10 @@ class PagesController < ApplicationController
     def home
     end
     
-    def hall_of_fame
+    def hall
         @users = User.all
     end
     
+    def instructs
+    end
 end

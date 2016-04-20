@@ -1,8 +1,11 @@
 .row
-  .col-md-8.col-md-offset-2
+  .col-md-6.col-md-offset-3
     %p
       Welcome to Sciparo! Scissors Paper Rock Lizard Spock simulator!
+      %br
       What would you like to do?
       %br/
-      = link_to "Play!", '#', class: 'btn btn-primary'
-      = link_to "Hall of fame", hall_path, class: 'btn btn-primary'
+      = link_to "Play!",        instructs_path, class: 'btn btn-primary btn-lg form-control'
+      %br
+      %br
+      = link_to "Hall of fame", hall_path,      class: 'btn btn-primary form-control'
