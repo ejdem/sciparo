@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   get 'hall' => 'pages#hall'
   get 'instructs' => 'pages#instructs'
   
+  get  'play'   => 'sessions#new'
+  post 'play'   => 'sessions#create'
+  get  'finish' => 'sessions/destroy'
   resources :users
+  resources :matches
 end

@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Your user is ready"
+      redirect_to '/matches/new'
+    else
+      redirect_to 'new'
     end
   end
 

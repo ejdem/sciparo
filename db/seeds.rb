@@ -1,7 +1,35 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#1
+scissors = Cart.create!(name:        "scissors",
+                        wins_with1:  3,
+                        wins_with2:  5,
+                        loses_with1: 2,
+                        loses_with2: 4)
+#2
+rock = Cart.create!(name:            "rock",
+                        wins_with1:  1,
+                        wins_with2:  5,
+                        loses_with1: 3,
+                        loses_with2: 4)
+#3
+paper = Cart.create!(name:       "paper",
+                        wins_with1:  2,
+                        wins_with2:  4,
+                        loses_with1: 1,
+                        loses_with2: 5)
+#4
+spock = Cart.create!(name:       "spock",
+                        wins_with1:  1,
+                        wins_with2:  2,
+                        loses_with1: 3,
+                        loses_with2: 5)
+#5
+lizard = Cart.create!(name:       "lizard",
+                        wins_with1:  4,
+                        wins_with2:  1,
+                        loses_with1: 2,
+                        loses_with2: 3)
+puts "Cards generated!"
+
+User.create!(name: "computer")
+
+puts "Default played generated"

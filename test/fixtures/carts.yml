@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wins_with1: 1
+  wins_with2: 1
+  loses_with1: 1
+  loses_with2: 1
+
+two:
+  wins_with1: 1
+  wins_with2: 1
+  loses_with1: 1
+  loses_with2: 1
