@@ -2,3 +2,9 @@
   .container
     .navbar-header
       = link_to "Sciparo", root_path, class: "navbar-brand"
+    .navbar-text
+      - if current_user
+        You're playing as:
+        = current_user.name
+    .nav.navbar-nav.navbar-right
+      = link_to "Quit Match", finish_path, class: "btn btn-danger btn-sm"

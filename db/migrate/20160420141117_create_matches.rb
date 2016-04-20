@@ -1,10 +1,12 @@
 class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
-      t.integer :player_id
-      t.integer :players_lifes, default: 3
-
+      #t.integer :player1,       index: true
+      t.integer :player_id,    index: true, foreign_key: true
+      t.integer :player1_lifes, default: 3
+      t.integer :player2_lifes, default: 3
       t.timestamps null: false
     end
+    #add_index :matches, [:player1_id], unique: true
   end
 end
