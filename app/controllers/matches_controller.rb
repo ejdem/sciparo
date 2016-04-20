@@ -7,7 +7,7 @@ class MatchesController < ApplicationController
     
     def create
         @match = current_user.start_match
-        if @match.save
+        if @match.save!
             flash[:success] = "match starts!"
             redirect_to @match
         else
