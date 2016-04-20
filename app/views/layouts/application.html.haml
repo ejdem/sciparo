@@ -12,18 +12,9 @@
         .jumbotron
           Sciparo
       .row
-        - flash.each do |type, msg|
-          - if type == 'notice'
-            - type = 'success'
-          - elsif type == 'alert'
-            - type = 'danger'
-          %div{:class => "alert alert-#{type}"}= msg
+        = render '/layouts/flashes'
       .row
         = yield
-      .row
-        %p
-          You play as:
-          = current_user.name
     .container
       = debug(params) if Rails.env.development?
       = console       if Rails.env.development?

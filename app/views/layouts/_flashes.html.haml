@@ -1,0 +1,6 @@
+- flash.each do |type, msg|
+  - if type == 'notice'
+    - type = 'success'
+  - elsif type == 'alert'
+    - type = 'danger'
+  %div{:class => "alert alert-#{type}"}= msg
