@@ -3,11 +3,12 @@
   %br
 %h6
   You have
-  = @match.players_lifes
+  = @match.player1_lifes
+  lives
   %br
 %p
   Played matches:
-  = current_user.matches
+  = current_user.played_matches
   %br
   Matches won:
   = current_user.wins

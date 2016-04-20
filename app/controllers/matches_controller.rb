@@ -16,7 +16,9 @@ class MatchesController < ApplicationController
     end
     
     def show
-        @match = Match.find(params[:id])
+        @match   = Match.find(params[:id])
+        @player2 = User.find(@match.player2_id)
+        @cards   = Cart.all
     end
     
     private

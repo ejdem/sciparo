@@ -1,1 +1,13 @@
-hello
+.row
+  .col-md-3
+    = render '/matches/stats'
+  .col-md-6
+    Here will be our matches
+  .col-md-3
+    = render '/matches/stats2'
+.row
+  .col-md-4.col-md-offset-4
+    %ul.list-inline
+      - @cards.each do |c|
+        %li
+          = button_to c.name, '#', class: "btn btn-primary btn-sm"

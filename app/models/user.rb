@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
                               foreign_key: "player1_id"
     has_many :passif_matches, class_name: "Match",
                               foreign_key: "player2_id"
-                             
+    
+    # Creates new match in relationship with actual player, sets its opponent to default player : computer                         
     def start_match
         self.active_matches.create!(player1_id: self.id, player2_id: 1)
     end
