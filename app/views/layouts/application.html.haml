@@ -10,7 +10,13 @@
     .container
       .row
         .jumbotron
-          Sciparo
+          %blockquote
+            %p
+              = @quote.content
+            %small
+              = @quote.author
+              from
+              %cite{:title => "Source Title"} Bing Bang Theory
       .row
         = render '/layouts/flashes'
       .row
