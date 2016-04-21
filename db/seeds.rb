@@ -30,6 +30,6 @@ lizard = Cart.create!(name:       "lizard",
                         loses_with2: 3)
 puts "Cards generated!"
 
-User.create!(name: "computer")
+User.create!(name: "Sheldon Cooper")
 
 puts "Default played generated"

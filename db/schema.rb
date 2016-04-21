@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420141351) do
+ActiveRecord::Schema.define(version: 20160421112209) do
 
   create_table "carts", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20160420141351) do
 
   add_index "matches", ["player1_id"], name: "index_matches_on_player1_id"
   add_index "matches", ["player2_id"], name: "index_matches_on_player2_id"
+
+  create_table "quotes", force: :cascade do |t|
+    t.string   "author"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
