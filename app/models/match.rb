@@ -5,10 +5,12 @@ class Match < ActiveRecord::Base
     # Two players as input, to change wins.
     def finished?(player1, player2)
         if self.player1_lifes < 0 #&& self.player2_lifes > 0
-            player1.wins += 1
+            player1.wins  += 1
+            player2.loses += 1
             "Player 2 has won the match!"
         elsif self.player2_lifes < 0 #&& self.player2_lifes < 0
-            player2.wins += 1
+            player2.wins  += 1
+            player1.loses += 1
             "Player 1 has won the match!"
         else
             "Not finished yet"
@@ -43,17 +45,15 @@ class Match < ActiveRecord::Base
     def remis_add_points(player1, player2)
         player1.streak += 1
         player2.streak += 1
-        player1.save!
-        player2.save!
+        player1.save
+        player2.save
     end
     # Increments and decrements players stats when one wins.
     def add_points(player_wins, player_loses)
-        player_wins.wins   += 1
         player_wins.streak += 1
-        player_loses.loses += 1
         player_loses.streak = 0
-        player_wins.save!
-        player_loses.save!
+        player_wins.save
+        player_loses.save
     end
     # Make a turn, user choses his action, chekcs if wins with computer.
     # Input argument is object of type Card (or rather 'Cart',

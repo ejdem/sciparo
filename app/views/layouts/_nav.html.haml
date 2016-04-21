@@ -7,5 +7,6 @@
         You're playing as:
         = current_user.name
     .nav.navbar-nav.navbar-right
-      = link_to 'Back',       root_path,   class: "btn btn-warning"
-      = link_to "Quit Match", finish_path, class: "btn btn-danger btn-md"
+      = link_to 'Back', root_path,   class: "btn btn-warning"
+      - if current_user
+        = link_to "Quit Match", finish_path, class: "btn btn-danger btn-md"

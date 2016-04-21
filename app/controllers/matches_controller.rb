@@ -21,6 +21,12 @@ class MatchesController < ApplicationController
         @cards   = Cart.all
     end
     
+    def video
+        @youtube = 'https://www.youtube.com/embed/watch?v=iapcKVn7DdY'
+        sleep 2
+        redirect_to root_url
+    end
+    
     private
     
     def match_params

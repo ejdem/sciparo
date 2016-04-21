@@ -9,10 +9,16 @@ class CartsController < ApplicationController
     @player2 = User.find(@match.player2_id)
     @result  = @match.turn(@card)
     #@whowon  = @match.finished?
-    if @result[2] != "Not finished yet"
-        respond_to do |format|
-            format.js { render :js => "window.location.href = '#{root_url}'" }
-        end
+    if @result[2] == "Player 1 has won the match!"
+      flash[:success] = "you won! Congrats!"
+      respond_to do |format|
+          format.js { render :js => "window.location.href = '#{root_url}'" }
+      end
+    elsif @result[2] == "Player 2 has won the match!"
+      flash[:danger] = "Match lost!"
+      respond_to do |format|
+          format.js { render :js => "window.location.href = '#{root_url}'" }
+      end
     end
   end
   

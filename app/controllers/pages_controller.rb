@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     
     def hall
         @users = User.all
+        @users.order(wins: :desc)
     end
     
     def instructs

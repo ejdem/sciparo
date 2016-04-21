@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
   
+  def index
+    @users   = User.all
+                   .order(wins: :desc)
+                   .paginate(page: params[:wins_page], per_page: 10)
+    @users2  = User.all
+                   .order(streak: :desc)
+                   .paginate(page: params[:streak_page], per_page: 10)
+  end
+  
   def new
     @user = User.new
   end
@@ -11,7 +20,7 @@ class UsersController < ApplicationController
       flash[:success] = "Your user is ready"
       redirect_to instructs_path
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 

@@ -1,0 +1,20 @@
+%p
+  Ranking of players who made longest streak.
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th #
+      %th name
+      %th longest streak
+  %tbody
+    - i = 10 * (params[:streak_page].to_i - 1)
+    - @users2.each do |u|
+      - next if u.id == 1
+      %tr
+        %td
+          = i += 1
+        %td
+          = u.name
+        %td
+          = u.streak
+= will_paginate @users2, :param_name => 'streak_page'

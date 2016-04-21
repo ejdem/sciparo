@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get  'play'   => 'sessions#new'
   post 'play'   => 'sessions#create'
   get  'finish' => 'sessions#destroy'
-  
+  get  'video'  => 'matches#video'
   resources :users
   resources :matches
   resources :carts, only: [:show]

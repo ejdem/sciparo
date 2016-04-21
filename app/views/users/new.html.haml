@@ -1,5 +1,9 @@
 .col-md-6.col-md-offset-3
   = form_for(@user) do |f|
+    - if @user.errors.any?
+      .alert.alert-danger
+        - @user.errors.full_messages.each do |m|
+          = m
     = f.label      :name
     = f.text_field :name, class: 'form-control'
     = f.submit     'Create!', class: 'btn-primary form-control'

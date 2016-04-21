@@ -1,0 +1,20 @@
+%p
+  Ranking of players with greates number of wins.
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th #
+      %th name
+      %th wins
+  %tbody
+    - i = 10 * (params[:wins_page].to_i - 1)
+    - @users.each do |u|
+      - next if u.id == 1
+      %tr
+        %td
+          = i += 1
+        %td
+          = u.name
+        %td
+          = u.wins
+= will_paginate @users, :param_name => 'wins_page'
