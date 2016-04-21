@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
         u = User.find(1)
         self.played_matches += 1
         u.played_matches    += 1
-        u.save!
-        self.active_matches.create!(player1_id: self.id, player2_id: 1)
+        u.save
+        self.active_matches.create(player1_id: self.id, player2_id: 1)
     end
 end
