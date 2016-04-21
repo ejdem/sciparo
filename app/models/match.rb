@@ -2,19 +2,9 @@ class Match < ActiveRecord::Base
     belongs_to :playerWhoStarted, class_name: "User"
     belongs_to :secondPlayed,     class_name: "User"
     
-    # Decreases a number of lives of a plaver.
-    # Input arg is integer, for player id.
-    def lose_live(player)
-        if player == self.player1_id
-          self.player1_lifes -= 1
-        else
-          self.player2_lifes -= 1
-        end
-        self.save!
-    end
     # Checks if players still have lives.
     def finished?
-        if self.player1_lifes < 0 && self.player2_lifes > 0
+        if    self.player1_lifes < 0 && self.player2_lifes > 0
             "Player 2 has won!"
         elsif self.player1_lifes > 0 && self.player2_lifes < 0
             "Player 1 has won!"
@@ -30,6 +20,7 @@ class Match < ActiveRecord::Base
     def who_wins(player1_card,player2_card)
         player1 = User.find(self.player1_id)
         player2 = User.find(self.player2_id)
+        # Determines result of turn.
         if player1_card == player2_card
             self.remis_add_points(player1,player2)
             "remis"
@@ -64,6 +55,7 @@ class Match < ActiveRecord::Base
     # make a turn, user choses his action, chekcs if wins with computer.
     # Input argument is object of type Card (or rather 'Cart',
     # as someone has apparently some grammar problems.
+    # Output is a hash with strings, so I coul iterate it in view.
     def turn(player1_card)
         player2_card = computer_card
         answer       = []
