@@ -31,32 +31,35 @@ class Match < ActiveRecord::Base
         player1 = User.find(self.player1_id)
         player2 = User.find(self.player2_id)
         if player1_card == player2_card
+            self.remis_add_points(player1,player2)
+            "remis"
+        elsif player1_card.wins?(player2_card.id)
+            self.add_points(player1, player2)
+            self.player2_lifes -= 1
+            self.save!
+            "player 1 wins"
+        else
+            self.add_points(player2, player1)
+            self.player1_lifes -= 1
+            self.save!
+            "player 2 wins"
+        end
+    end
+    # Incremets streaks when remis.
+    def remis_add_points(player1, player2)
             player1.streak += 1
             player2.streak += 1
             player1.save!
             player2.save!
-            "remis"
-        elsif player1_card.wins?(player2_card.id)
-            player1.wins       += 1
-            player1.streak     += 1
-            player2.loses      -= 1
-            player2.streak      = 0
-            self.player2_lifes -= 1
-            self.save!
-            player1.save!
-            player2.save!
-            "player 1 wins"
-        else
-            player2.wins       += 1
-            player2.streak     += 1
-            player1.loses      -= 1
-            player1.streak      = 0
-            self.player1_lifes -= 1
-            self.save!
-            player1.save!
-            player2.save!
-            "player 2 wins"
-        end
+    end
+    # Increments and decrements players stats when one wins.
+    def add_points(player_wins, player_loses)
+        player_wins.wins   += 1
+        player_wins.streak += 1
+        player_loses.loses += 1
+        player_loses.streak = 0
+        player_wins.save!
+        player_loses.save!
     end
     # make a turn, user choses his action, chekcs if wins with computer.
     # Input argument is object of type Card (or rather 'Cart',
@@ -67,42 +70,5 @@ class Match < ActiveRecord::Base
         answer[0]    = "player 2 plays #{player2_card.name}"
         answer[1]    = self.who_wins(player1_card,player2_card)
         answer
-        # answer = []
-        # answer[0] = "Computer has played " + cm.name + "\n"
-        # if player_card.id == computer_card.id
-        #     # Remis.
-        #     result = 2
-        #     self.remis_add_points(@player1, @player2)
-        #     answer[1] = "remis\n"
-        # else
-        #     # Tu coś nie działa!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        #     result = player_card.wins?(computer_card.id)
-        #     if result
-        #         self.add_points(@player1, @player2)
-        #         self.lose_live(self.player2_id)
-        #         answer[1] = "player 1 wins\n"
-        #     else
-        #         self.lose_live(self.player1_id)
-        #         self.add_points(@player2, @player1)
-        #         answer[1] = "player 2 wins\n"
-        #     end
-        # end
-        # answer
-    end
-    # Increments streak if remis for bouth
-    # Do poprawienia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    def remis_add_points(player1, player2)
-        player1.streak += 1
-        player2.streak += 1
-        player1.save!
-        player2.save!
-    end
-    # Increments points for player who won.
-    def add_points(player1, player2)
-        player1.wins   += 1
-        player1.streak += 1
-        player2.loses  += 1
-        player1.save!
-        player2.save!
     end
 end
