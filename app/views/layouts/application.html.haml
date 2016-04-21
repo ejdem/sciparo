@@ -17,5 +17,5 @@
         = yield
     .container
       = debug(params) if Rails.env.development?
-      = console       if Rails.env.development?
+      - console
       

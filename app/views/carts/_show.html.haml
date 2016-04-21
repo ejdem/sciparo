@@ -6,4 +6,8 @@
   = @match.id
   %br
   verdict
-  = @result
+  - @result.each do |r|
+    = r
+    %br
+  %br
+  = @whowon

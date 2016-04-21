@@ -1,14 +1,18 @@
 .row
   .col-md-3
-    = render '/matches/stats'
+    Your stats
+    %br
+    #stats1_field
   .col-md-6
     Here will be our matches
     #match_field
   .col-md-3
-    = render '/matches/stats2'
+    Computer's stats
+    #stats2_field
 .row
-  .col-md-4.col-md-offset-4
-    %ul.list-inline
-      - @cards.each do |c|
-        %li
-          = link_to c.name, c, class: "btn btn-primary btn-sm", remote: true
+  #cards_field
+    .col-md-4.col-md-offset-4
+      %ul.list-inline
+        - @cards.each do |c|
+          %li
+            = link_to c.name, c, class: "btn btn-primary btn-sm", remote: true
