@@ -7,7 +7,11 @@
       %th name
       %th longest streak
   %tbody
-    - i = 10 * (params[:streak_page].to_i - 1)
+    / This quite ugly line is for proper users numerating,
+    / so on first page it would be from 1 to 10
+    / on sechond page from 11 to 20
+    / and so on...
+    - params[:streak_page].to_i == 0 ? i = 0 : i = 10 * (params[:streak_page].to_i - 1)
     - @users2.each do |u|
       - next if u.id == 1
       %tr
