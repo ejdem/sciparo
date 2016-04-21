@@ -28,11 +28,33 @@ class Match < ActiveRecord::Base
     # Checks relations which card wins.
     # As input two Cart class objects (yes, shoud be "Card").
     def who_wins(player1_card,player2_card)
+        player1 = User.find(self.player1_id)
+        player2 = User.find(self.player2_id)
         if player1_card == player2_card
+            player1.streak += 1
+            player2.streak += 1
+            player1.save!
+            player2.save!
             "remis"
         elsif player1_card.wins?(player2_card.id)
+            player1.wins       += 1
+            player1.streak     += 1
+            player2.loses      -= 1
+            player2.streak      = 0
+            self.player2_lifes -= 1
+            self.save!
+            player1.save!
+            player2.save!
             "player 1 wins"
         else
+            player2.wins       += 1
+            player2.streak     += 1
+            player1.loses      -= 1
+            player1.streak      = 0
+            self.player1_lifes -= 1
+            self.save!
+            player1.save!
+            player2.save!
             "player 2 wins"
         end
     end
@@ -41,11 +63,9 @@ class Match < ActiveRecord::Base
     # as someone has apparently some grammar problems.
     def turn(player1_card)
         player2_card = computer_card
-        player1      = User.find(self.player1_id)
-        player2      = User.find(self.player2_id)
-        answer = []
-        answer[0] = "player 2 plays #{player2_card.name}"
-        answer[1] = self.who_wins(player1_card,player2_card)
+        answer       = []
+        answer[0]    = "player 2 plays #{player2_card.name}"
+        answer[1]    = self.who_wins(player1_card,player2_card)
         answer
         # answer = []
         # answer[0] = "Computer has played " + cm.name + "\n"
