@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Your user is ready"
-      redirect_to '/matches/new'
+      redirect_to instructs_path
     else
       redirect_to 'new'
     end

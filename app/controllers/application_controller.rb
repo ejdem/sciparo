@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   
   
   def view_quote
-    @quote = Quote.find(rand(Quote.count))
+    @quote = Quote.find(rand(Quote.count)+1)
   end
 end

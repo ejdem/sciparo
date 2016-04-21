@@ -29,7 +29,10 @@
     %br
     %br
     - if current_user
-      = link_to "new Game", new_match_path, class: "btn btn-primary form-control"
+      /= link_to "new Game", new_match_path, class: "btn btn-primary form-control"
+      = form_for(current_user.active_matches.build) do |f|
+        = hidden_field_tag :player1_id, current_user.id
+        = f.submit "play", class: "btn btn-primary form-control"
     - else  
       = link_to "Create user", new_user_path, class: 'btn btn-primary form-control'
     %br
