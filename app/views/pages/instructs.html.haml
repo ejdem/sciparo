@@ -1,40 +1,62 @@
-.col-md-6.col-md-offset-3
+.col-md-6
   %h2
     How to play:
+  %p
     %br
-    // Rules here are simple:
-    // %br/
-    // %br/
-    // Scissors cuts paper.
-    // %br
-    // Scissors decapitates lizard.
-    // %br
-    // Paper covers rock.
-    // %br
-    // Paper disproves spock.
-    // %br
-    // Rock crushes scissors.
-    // %br
-    // Rock cushes lizard.
-    // %br
-    // Lizard eats paper.
-    // %br
-    // Lizard poisons spock.
-    // %br
-    // Spock veporizes rock.
-    // %br
-    // Spock smashes scissors.
-    // %br
-    // Before you start, you have to create user.
-    // %br
-    // Let the force be with you!
-    %img{:src => "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Rock_Paper_Scissors_Lizard_Spock_en.svg/400px-Rock_Paper_Scissors_Lizard_Spock_en.svg.png"}/
+    %strong 
+      Scissors
+    cuts 
+    %strong
+      paper
+    and decapitates
+    %strong
+      lizard.
     %br
-    - if current_user
-      /= link_to "new Game", new_match_path, class: "btn btn-primary form-control"
-      = form_for(current_user.active_matches.build) do |f|
-        = hidden_field_tag :player1_id, current_user.id
-        = f.submit "play", class: "btn btn-primary form-control"
-    - else  
-      = link_to "Create user", new_user_path, class: 'btn btn-primary form-control'
-    //= link_to "back", root_path, class: 'btn btn-danger'
+    %strong
+      Paper
+    covers
+    %strong
+      rock.
+    and disproves
+    %strong
+      spock.
+    %br
+    %strong
+      Rock
+    crushes
+    %strong
+      scissors
+    and crushes
+    %strong
+      lizard.
+    %br
+    %strong
+      Lizard
+    eats
+    %strong
+      paper.
+    and poisons
+    %strong
+      spock.
+    %br
+    %strong 
+      Spock
+    veporizes
+    %strong
+      rock.
+    and smashes
+    %strong
+      scissors.
+    %br
+.col-md-6
+  %img{:src => "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Rock_Paper_Scissors_Lizard_Spock_en.svg/400px-Rock_Paper_Scissors_Lizard_Spock_en.svg.png"}/
+.col-md-6.col-md-offset-3
+  %br
+  - if current_user
+    /= link_to "new Game", new_match_path, class: "btn btn-primary form-control"
+    = form_for(current_user.active_matches.build) do |f|
+      = hidden_field_tag :player1_id, current_user.id
+      = f.submit "play", class: "btn btn-primary form-control"
+  - else  
+    = link_to "Create user", new_user_path, class: 'btn btn-primary form-control'
+  //= link_to "back", root_path, class: 'btn btn-danger'
