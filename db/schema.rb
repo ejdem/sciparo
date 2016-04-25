@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 20160421112209) do
   create_table "matches", force: :cascade do |t|
     t.integer  "player1_id"
     t.integer  "player2_id"
-    t.integer  "player1_lifes", default: 3
-    t.integer  "player2_lifes", default: 3
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "player1_lifes",  default: 3
+    t.integer  "player2_lifes",  default: 3
+    t.integer  "player1_streak", default: 0
+    t.integer  "player2_streak", default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "matches", ["player1_id"], name: "index_matches_on_player1_id"
