@@ -24,12 +24,16 @@ class Match < ActiveRecord::Base
     # Two players as input, to change wins.
     def finished?(player1, player2)
         if self.player1_lifes < 0 #&& self.player2_lifes > 0
-            player1.wins  += 1
-            player2.loses += 1
-            "Player 2 has won the match!"
-        elsif self.player2_lifes < 0 #&& self.player2_lifes < 0
             player2.wins  += 1
             player1.loses += 1
+            player1.save
+            player2.save
+            "Player 2 has won the match!"
+        elsif self.player2_lifes < 0 #&& self.player2_lifes < 0
+            player1.wins  += 1
+            player2.loses += 1
+            player1.save
+            player2.save
             "Player 1 has won the match!"
         else
             "Not finished yet"
