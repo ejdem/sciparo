@@ -3,19 +3,22 @@
     .navbar-header
       = link_to "Sciparo", root_path, class: "navbar-brand"
     - if current_user
-      %ul.nav.navbar-nav
+      .navbar-text
+        You're playing as:
+        = current_user.name
+      %ul.nav.navbar-nav.navbar-right
         %li
-          .navbar-text
-            You're playing as:
-            = current_user.name
-    %ul.nav.navbar-nav.navbar-right
-      %li
-        .nav.navbar-form
-          = form_for(current_user.active_matches.build) do |f|
-            = hidden_field_tag :player1_id, current_user.id
-            = f.submit "New match", class: "btn btn-link"
-      %li
-        = link_to 'Back', root_path
-      %li
-        - if current_user
-          = link_to "Quit Match", finish_path
+          .nav.navbar-form
+            = form_for(current_user.active_matches.build) do |f|
+              = hidden_field_tag :player1_id, current_user.id
+              = f.submit "New match", class: "btn btn-link"
+        %li
+          = link_to 'Back', root_path
+        %li
+          - if current_user
+            = link_to "Quit Match", finish_path
+    - else
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to 'Back', root_path
+      
