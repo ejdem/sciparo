@@ -66,9 +66,9 @@ class Match < ActiveRecord::Base
             @answer.push("Player2: #{self.player2_streak}")
             @answer.push("You have won that turn!")
         else
-            self.player1_streak     = 0
-            self.player2_streak    += 1
-            self.player1_lifes -= 1
+            self.player1_streak = 0
+            self.player2_streak += 1
+            self.player1_lifes  -= 1
             self.save
             if @player2.streak < self.player2_streak
                 @player2.streak = self.player2_streak
