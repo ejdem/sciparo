@@ -1,4 +1,4 @@
-.col-md-6
+.col-md-6.col-sm-6
   %h2
     How to play:
   %p
@@ -48,9 +48,9 @@
     %strong
       scissors.
     %br
-.col-md-6
+.col-md-6.col-sm-6
   %img{:src => "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Rock_Paper_Scissors_Lizard_Spock_en.svg/400px-Rock_Paper_Scissors_Lizard_Spock_en.svg.png"}/
-.col-md-6.col-md-offset-3
+.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
   %br
   - if current_user
     /= link_to "new Game", new_match_path, class: "btn btn-primary form-control"
