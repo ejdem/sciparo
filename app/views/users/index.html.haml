@@ -1,19 +1,14 @@
 .row
-  .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
+  .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
     %h3
       Our Hall of Fame! Here you can see best badasses 
       %br
       Chose category:
   %br
-  #bestPlayers
-    .col-md-4.col-sm-4
-      /= render 'wins'
-    .col-md-4.col-sm-4
-      /= render 'streak'
-    .col-md-4.col-sm-4
-      /= render 'points'
+  .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    #bestPlayers
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
     = link_to "Wins",    users_index_wins_path, remote: true, class: "btn btn-primary"
     = link_to "Points",  users_index_points_path, remote: true, class: "btn btn-primary"
     = link_to "Streaks", users_index_streaks_path, remote: true, class: "btn btn-primary"
