@@ -6,17 +6,19 @@
     Your stats
     %br
     #stats1_field
+      = render 'stats'
   .col-md-6.col-sm-6
     /Here will be our matches
     #match_field
   .col-md-3.col-sm-3
     Computer's stats
     #stats2_field
+      = render 'stats2'
 .row
   #cards_field
-    .col-md-4.col-md-offset-4.col-sm-8.col-sm-offset-
-      Your choice:
-      %ul.list-inline
-        - @cards.each do |c|
-          %li
-            = link_to c.name, c, class: "btn btn-primary btn-sm", remote: true
+  .col-md-4.col-md-offset-4.col-sm-8.col-sm-offset-2
+    Your choice:
+    %ul.list-inline
+      - @cards.each do |c|
+        %li
+          = link_to c.name, c, class: "btn btn-primary btn-sm", remote: true
