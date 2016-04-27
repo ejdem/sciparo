@@ -10,7 +10,7 @@
     / on sechond page from 11 to 20
     / and so on...
     - params[:wins_page].to_i == 0 ? i = 0 : i = 10 * (params[:wins_page].to_i - 1)
-    - @users.each do |u|
+    - @usersWins.each do |u|
       - next if u.id == 1
       %tr
         %td
@@ -19,4 +19,4 @@
           = u.name
         %td
           = u.wins
-= will_paginate @users, :param_name => 'wins_page'
+= will_paginate @usersWins, :param_name => 'wins_page'
