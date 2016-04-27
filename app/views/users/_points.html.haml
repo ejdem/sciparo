@@ -3,14 +3,14 @@
     %tr
       %th #
       %th name
-      %th longest streak
+      %th points
   %tbody
     / This quite ugly line is for proper users numerating,
     / so on first page it would be from 1 to 10
     / on sechond page from 11 to 20
     / and so on...
-    - params[:streak_page].to_i == 0 ? i = 0 : i = 10 * (params[:streak_page].to_i - 1)
-    - @users2.each do |u|
+    - params[:wins_page].to_i == 0 ? i = 0 : i = 10 * (params[:wins_page].to_i - 1)
+    - @users3.each do |u|
       - next if u.id == 1
       %tr
         %td
@@ -18,5 +18,5 @@
         %td
           = u.name
         %td
-          = u.streak
-= will_paginate @users2, :param_name => 'streak_page'
+          = u.wins
+= will_paginate @users, :param_name => 'wins_page'

@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160421112209) do
     t.integer  "player2_lifes",  default: 3
     t.integer  "player1_streak", default: 0
     t.integer  "player2_streak", default: 0
+    t.integer  "player1_points", default: 0
+    t.integer  "player2_points", default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160421112209) do
     t.integer  "wins",           default: 0
     t.integer  "loses",          default: 0
     t.integer  "streak",         default: 0
+    t.integer  "points",         default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

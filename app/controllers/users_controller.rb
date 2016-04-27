@@ -4,10 +4,14 @@ class UsersController < ApplicationController
   # Limited for security (avoid to long load).
   def index
     @users   = User.all
-                   .order(wins: :desc)
+                   .order(points: :desc)
                    .limit(30)
                    .paginate(page: params[:wins_page], per_page: 10)
     @users2  = User.all
+                   .order(streak: :desc)
+                   .limit(30)
+                   .paginate(page: params[:streak_page], per_page: 10)
+    @users3  = User.all
                    .order(streak: :desc)
                    .limit(30)
                    .paginate(page: params[:streak_page], per_page: 10)
