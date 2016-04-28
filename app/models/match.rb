@@ -1,7 +1,8 @@
 class Match < ActiveRecord::Base
     belongs_to :playerWhoStarted, class_name: "User"
     belongs_to :secondPlayed,     class_name: "User"
-
+    validates :player1_id, presence: true
+    validates :player2_id, presence: true
     # Make a turn, user choses his action, chekcs if wins with computer.
     # Input argument is object of type Card (or rather 'Cart',
     # as someone has apparently some grammar problems.
@@ -39,13 +40,17 @@ class Match < ActiveRecord::Base
     # Two players as input, to change wins.
     def finished?
         if self.player1_lifes < 0
-            @player2.wins  += 1
-            @player1.loses += 1
+            @player2.wins   += 1
+            @player2.points += self.player2_points
+            @player1.points += self.player1_points
+            @player1.loses  += 1
             @player1.save
             @player2.save
             "Player 2 has won the match!"
         elsif self.player2_lifes < 0
             @player1.wins  += 1
+            @player1.points += self.player1_points
+            @player2.points += self.player2_points
             @player2.loses += 1
             @player1.save
             @player2.save

@@ -1,9 +1,52 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   author: MyString
   content: MyText
 
 two:
+  id: 2
   author: MyString
   content: MyText
+
+three:
+  id: 3
+  author: MyString
+  content: MyText
+
+four:
+  id: 4
+  author: MyString
+  content: MyText
+  
+fife:
+  id: 5
+  author: MyString
+  content: MyText
+
+six:
+  id: 6
+  author: MyString
+  content: MyText
+  
+seven:
+  id: 7
+  author: MyString
+  content: MyText
+
+eight:
+  id: 8
+  author: MyString
+  content: MyText
+
+nine:
+  id: 9
+  author: MyString
+  content: MyText
+
+ten:
+  id: 10
+  author: MyString
+  content: MyTextq
+  
