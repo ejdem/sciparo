@@ -11,7 +11,6 @@
     / and so on...
     - params[:streak_page].to_i == 0 ? i = 0 : i = 10 * (params[:streak_page].to_i - 1)
     - @usersStreaks.each do |u|
-      - next if u.id == 1
       %tr
         %td
           = i += 1

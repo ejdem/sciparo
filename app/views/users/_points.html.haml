@@ -9,9 +9,8 @@
     / so on first page it would be from 1 to 10
     / on sechond page from 11 to 20
     / and so on...
-    - params[:wins_page].to_i == 0 ? i = 0 : i = 10 * (params[:wins_page].to_i - 1)
+    - params[:points_page].to_i == 0 ? i = 0 : i = 10 * (params[:points_page].to_i - 1)
     - @usersPoints.each do |u|
-      - next if u.id == 1
       %tr
         %td
           = i += 1
