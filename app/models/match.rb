@@ -23,21 +23,19 @@ class Match < ActiveRecord::Base
             self.add_remis_streak
             self.update_streak(0)
         elsif player1_card.wins?(@player2_card.id)
-            self.add_player_wins_streak(1)
+            self.add_points_wins_player(1)
             self.update_streak(1)
-            self.update_points(1)
         else
-            self.add_player_wins_streak(2)
+            self.add_points_wins_player(2)
             self.update_streak(2)
-            self.update_points(1)
         end
         # Add last string, that says who won, if won.
         @answer.push(self.finished?)
         @answer
     end
-    # END OF NEW TURN FUNCTION
     # Checks if players still have lives.
-    # Two players as input, to change wins.
+    # Adds points.
+    # Returns string that will be added to hash.
     def finished?
         if self.player1_lifes < 0
             @player2.wins   += 1
@@ -48,10 +46,10 @@ class Match < ActiveRecord::Base
             @player2.save
             "Player 2 has won the match!"
         elsif self.player2_lifes < 0
-            @player1.wins  += 1
+            @player1.wins   += 1
             @player1.points += self.player1_points
             @player2.points += self.player2_points
-            @player2.loses += 1
+            @player2.loses  += 1
             @player1.save
             @player2.save
             "Player 1 has won the match!"
@@ -73,11 +71,14 @@ class Match < ActiveRecord::Base
         @answer.push("You both played the same card - remis.")
         @answer.push("Actual streaks:")
         @answer.push("Player1: #{self.player1_streak}")
-        @answer.push("Player2: #{self.player2_streak}")  
+        @answer.push("Player2: #{self.player2_streak}") 
+        @answer.push("Actual points:")
+        @answer.push("Player1: #{self.player1_points}")
+        @answer.push("Player2: #{self.player2_points}")
     end
     # Adds streak for player who won, and reset for those, who lost.
     # puts strings into @answer, that would be printed in view.
-    def add_player_wins_streak(who)
+    def add_points_wins_player(who)
         if who == 1
             self.player1_streak += 1
             self.player1_points += 1
@@ -86,9 +87,9 @@ class Match < ActiveRecord::Base
             self.print_streak(1)
             self.save
         else
-            self.player1_streak  = 0
             self.player2_points += 1
             self.player2_streak += 1
+            self.player1_streak  = 0
             self.player1_lifes  -= 1
             self.print_streak(2)
             self.save
@@ -133,19 +134,19 @@ class Match < ActiveRecord::Base
         end
     end
     # Makes the same as method one up, but for points
-     def update_points(forwho)
-         if forwho == 1
-             if @player1.points < self.player1_points
-                 @player1.points = self.player1_points
-                 @player1.save
-             end
-         else
-             if @player2.points < self.player2_points
-                 @player2.points = self.player2_points
-                 @player2.save
-             end
-         end
-     end
+    #  def update_points(forwho)
+    #      if forwho == 1
+    #          if @player1.points < self.player1_points
+    #              @player1.points = self.player1_points
+    #              @player1.save
+    #          end
+    #      else
+    #          if @player2.points < self.player2_points
+    #              @player2.points = self.player2_points
+    #              @player2.save
+    #          end
+    #      end
+    #  end
     
     # End of class.
 end
