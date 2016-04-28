@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
-  # Will print two columns of best players.
-  # Limited for security (avoid to long load).
+  # 3 methods for printing best players...
+  #...with largest streaks.
   def streaks
     @usersStreaks  = User.where.not(id: 1)
                          .order(streak: :desc)
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       format.html
     end  
   end
-  # User.find(:all, :conditions => ["id != ?", 1]))
+  # ...with biggest number of points.
   def points
     @usersPoints = User.where.not(id: 1)
                        .order(points: :desc)
@@ -21,10 +21,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json
     end
   end
-  
+  # ...with most matches won.
   def wins
     @usersWins = User.where.not(id: 1)
                      .order(wins: :desc)

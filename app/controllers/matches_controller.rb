@@ -14,7 +14,9 @@ class MatchesController < ApplicationController
             flash[:danger] = "ooops! something went wrong"
         end
     end
-    
+    # In match show method printed both player, so that's why
+    # we are finding the other player. Cards are also shown
+    # so we need to find them all.
     def show
         @match   = Match.find(params[:id])
         @player2 = User.find(@match.player2_id)
